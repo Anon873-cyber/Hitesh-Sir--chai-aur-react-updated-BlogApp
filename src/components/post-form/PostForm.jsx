@@ -25,10 +25,10 @@ import { useSelector } from 'react-redux'
 //if post prop is available then delete previus image and edit the post  
         
         if (post) {
-            const file = data.image[0]?appwriteService.uploadFile(data.image[0]):null 
+            const file = await data.image[0]?appwriteService.uploadFile(data.image[0]):null 
             
             if (file) {
-                appwriteService.deleteFile(post.featuredImage)                
+               await appwriteService.deleteFile(post.featuredImage)                
             }
             const dbPost = await appwriteService.updatePost(post.$id,{
                 ...data,
@@ -68,10 +68,10 @@ import { useSelector } from 'react-redux'
             // const slug = value.toLocaleLowerCase().replace(/ /g,'-')
             // setValue('slug',slug)
             // return slug
-            return value.trim().toLocaleLowerCase().replace(/^[a-zA-Z\d\s]+/g,'-').replace(/\s/g,'-')
+            return value.trim().toLocaleLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-')  
         }
         return ''
-    })
+    },[])
 
     React.useEffect(() => {  
   
