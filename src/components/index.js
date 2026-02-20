@@ -7,11 +7,14 @@ import RTE from "./RTE";
 import Signup from "../pages/Signup";
 import Login from "./Login";
 import PostForm from "./post-form/PostForm";
-import Post from './post'
 import PostCard from "./PostCard";
 import AuthLayout from './AuthLayout'
+import Button from './Button'
+import Input from './Input'
 
 export {
+  Input,
+  Button,
   AuthLayout,
   PostCard,
   PostForm,
