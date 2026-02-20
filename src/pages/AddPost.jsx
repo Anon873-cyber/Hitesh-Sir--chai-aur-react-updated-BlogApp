@@ -3,7 +3,7 @@ import React  from 'react'
 import { Container, PostForm } from '../components'
 import authService from '../appwrite/auth'
 
-export const AddPost = () => {
+ const AddPost = () => {
    
     return (
         <div className='py-8'>
@@ -13,3 +13,5 @@ export const AddPost = () => {
         </div>
     )
 }
+
+export default AddPost
