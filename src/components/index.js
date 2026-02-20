@@ -9,8 +9,10 @@ import Login from "./Login";
 import PostForm from "./post-form/PostForm";
 import Post from './post'
 import PostCard from "./PostCard";
+import AuthLayout from './AuthLayout'
 
 export {
+  AuthLayout,
   PostCard,
   PostForm,
   Login,
