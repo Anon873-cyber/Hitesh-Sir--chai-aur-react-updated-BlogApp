@@ -19,13 +19,14 @@ export class AuthService {
             return await this.account.create({userId:ID.unique(), email, password, name});
 
         } catch (error) {
-            console.error(error)
+           
             return null
         }
 
     }
 
     async login({ email, password }) {
+       
         try {
             return await this.account.createEmailPasswordSession({ email, password })
 
@@ -37,6 +38,7 @@ export class AuthService {
     }
 
     async getCurrentUser() {
+      
         try {
             return await this.account.get()
         } catch (error) {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import authService from '../appwrite/auth'
+
 import { Button, Input, Logo } from './index'
 import { useDispatch } from 'react-redux'
-import { AuthService } from '../appwrite/auth'
+import  authService  from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
 
 
@@ -16,7 +16,7 @@ const Login = () => {
     const login = async (data) => {
         setError('')
         try {
-            const session = await AuthService.login(data.email, data.password)
+            const session = await authService.login(data.email, data.password)
 
             if (session) {
                 const userData = await authService.getCurrentUser()
