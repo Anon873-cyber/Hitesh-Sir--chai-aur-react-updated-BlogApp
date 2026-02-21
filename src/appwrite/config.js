@@ -90,7 +90,7 @@ export class Service {
        }
     }
 
-    async getPosts(queries = [Query.equal("status",active)]){
+    async getPosts(queries = []){
               
         try {
             

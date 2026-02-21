@@ -16,7 +16,8 @@ const Login = () => {
     const login = async (data) => {
         setError('')
         try {
-            const session = await authService.login(data.email, data.password)
+            console.log(data.email) // it is comming or available 
+            const session = await authService.login({email:data.email, password:data.password})
 
             if (session) {
                 const userData = await authService.getCurrentUser()

@@ -9,8 +9,9 @@ const Home = () => {
   useEffect(() => {
     appwriteService.getPosts().then((posts) => {
 
-      if (post) {
-        setPosts(posts)
+      if (posts.documents) {
+    
+        setPosts(posts.documents)
       }
 
     })

@@ -1,9 +1,9 @@
 import React, { use, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import authService, { login } from '../appwrite/auth'
+import authService  from '../appwrite/auth'
 import { Button, Input, Logo } from './index'
 import { useDispatch } from 'react-redux'
-import { AuthService } from '../appwrite/auth'
+
 import { set, useForm } from 'react-hook-form'
 
 const Signup = () => {
@@ -14,10 +14,11 @@ const Signup = () => {
     const [error, setError] = useState(null)
 
     const create = async (data) => {
+        console.log(data)
 
         setError('')
         try {
-            const userData = await AuthService.createAccount(data)
+            const userData = await authService.createAccount(data)
 
             if (userData) {
 
