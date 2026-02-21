@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux'
     })
 
     const navigate = useNavigate()
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector(state => state.userData)
      
     const submit = async (data) => { 
 //if post prop is available then delete previus image and edit the post  
