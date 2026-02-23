@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { Button, Input, Logo } from './index'
 import { useDispatch } from 'react-redux'
-import  authService  from '../appwrite/auth'
+import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
+import {loginSuccess} from '../store/authSlice'
 
 
 const Login = () => {
@@ -16,13 +17,13 @@ const Login = () => {
     const login = async (data) => {
         setError('')
         try {
-            console.log(data.email) // it is comming or available 
-            const session = await authService.login({email:data.email, password:data.password})
 
+            const session = await authService.login({ email: data.email, password: data.password })
+            
             if (session) {
                 const userData = await authService.getCurrentUser()
                 if (userData) {
-                    dispatch(authLogin(userData))
+                    dispatch(loginSuccess(userData))
                     navigate('/')
                 }
             }

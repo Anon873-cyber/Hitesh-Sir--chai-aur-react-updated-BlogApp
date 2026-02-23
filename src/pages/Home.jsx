@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 
-import { Container, PostCard } from '../components'
+import { Container, PostCard } from '../components/index'
 import appwriteService from '../appwrite/config'
 
 const Home = () => {

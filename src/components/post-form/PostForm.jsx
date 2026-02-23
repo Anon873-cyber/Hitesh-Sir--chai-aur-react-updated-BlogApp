@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux'
 
     const navigate = useNavigate()
     const userData = useSelector(state => state.userData)
+    
      
     const submit = async (data) => { 
 //if post prop is available then delete previus image and edit the post  
@@ -34,6 +35,7 @@ import { useSelector } from 'react-redux'
                 ...data,
                 featuredImage:file?file.$id:undefined
             })
+            console.log(dbPost)
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`)
@@ -44,6 +46,7 @@ import { useSelector } from 'react-redux'
         // if post is not available then save the new post 
 
         else{
+            
             const file = await appwriteService.uploadFile(data.image[0]);
             if (file) {
                 const fileId = file.$id
@@ -130,7 +133,7 @@ import { useSelector } from 'react-redux'
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+                <Button type="submit"  className="bg-blue-500 p-5 w-full">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>

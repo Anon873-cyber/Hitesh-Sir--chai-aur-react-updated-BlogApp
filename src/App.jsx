@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import authService, { AuthService } from './appwrite/auth.js'
-import { login, logout } from './store/authSlice.js'
+import { loginSuccess, logout } from './store/authSlice.js'
 
 import './App.css'
 import Header from './components/Header/Header.jsx'
@@ -20,7 +20,7 @@ function App() {
     authService.getCurrentUser()
       .then((userdata) => {
         if (userdata) {
-          dispatch(login({ userdata }))
+          dispatch(loginSuccess({ userdata }))
         }
         else {
           dispatch(logout())

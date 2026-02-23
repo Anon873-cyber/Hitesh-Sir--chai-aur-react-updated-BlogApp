@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import authService  from '../appwrite/auth'
 import { Button, Input, Logo } from './index'
 import { useDispatch } from 'react-redux'
-
+import { loginSuccess } from '../store/authSlice'
 import { set, useForm } from 'react-hook-form'
 
 const Signup = () => {
@@ -19,13 +19,21 @@ const Signup = () => {
         setError('')
         try {
             const userData = await authService.createAccount(data)
-
+            
             if (userData) {
-
-                const userData = await authService.getCurrentUser()
+                
+                // adding session 
+                const session = await authService.login({ email: data.email, password: data.password })
+                let userData = null
+                if (session) {
+                     userData = await authService.getCurrentUser()
+                    
+                }
+                
+                console.log(userData)
 
                 if (userData) {
-                    dispatch(login(userData))
+                    dispatch(loginSuccess(userData))
                     navigate('/')
                 }
             }
